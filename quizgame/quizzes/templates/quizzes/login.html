@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Login – Quiz Game</title>
+{% endblock %}
+
+{% block body %}
+<br>
+<h1>Welcome! Login here</h1>
+<h2>Login</h2>
+<form method="post">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<button type="submit">Login</button>
+</form>
+{% endblock %}

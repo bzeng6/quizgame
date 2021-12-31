@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from quizgame import views
 
 urlpatterns = [
+    path('', views.home_redirect, name='home_redirect'),
     path('quizzes/', include('quizzes.urls')),
     path('admin/', admin.site.urls),
 ]

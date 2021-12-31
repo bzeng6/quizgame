@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>{{ question.question_text }} - Quiz Game</title>
+{% endblock %}
+
+{% block body %}
+<h2>{{ question.question_text }}</h2>
+<form action="{% url 'quizzes:check_answer' question.id %}" method="post">
+{% csrf_token %}
+{% for choice in question.choice_set.all %}
+	<div class="form-check">
+  		<input class="form-check-input" type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+  		<label class="form-check-label" for="choice{{ forloop.counter }}">
+    	{{ choice.choice_text }}
+  		</label>
+  	</div>
+{% endfor %}
+<button type="submit">Submit</button>
+</form>
+{% endblock %}

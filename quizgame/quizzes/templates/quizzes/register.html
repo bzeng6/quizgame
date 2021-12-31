@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Register – Quiz Game</title>
+{% endblock %}
+
+{% block body %}
+<br>
+<h1>Welcome! Register here</h1>
+<h2>Register</h2>
+<p>Current time: {{ date }}</p>
+<form method="post">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<button type="submit">Register</button>
+</form>
+{% endblock %}
