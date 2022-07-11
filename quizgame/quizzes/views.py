@@ -5,12 +5,12 @@ from django.contrib.auth import update_session_auth_hash
 from datetime import datetime
 from django.contrib.auth.decorators import login_required
 from quizzes.forms import EditProfileForm
-from quizzes.models import Question
+from quizzes.models import Question, Exam
 from django.http import Http404
 
 def index(request):
-	question_list = Question.objects.all()
-	args = {'question_list': question_list}
+	exam_list = Exam.objects.all()
+	args = {'exam_list': exam_list}
 	return render(request, 'quizzes/index.html', args)
 
 def register(request):

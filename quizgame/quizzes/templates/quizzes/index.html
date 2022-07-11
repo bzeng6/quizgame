@@ -9,12 +9,12 @@
 <h1>Welcome! This is the quiz game.</h1>
 <p>This is the homepage for the quizzes. Select your quiz here.</p>
 
-{% if question_list %}
-{% for question in question_list %}
+{% if exam_list %}
+{% for exam in exam_list %}
 <div class="card" style="width: 18rem;">
   <div class="card-body">
-    <h5 class="card-title">{{ question.question_text }}</h5>
-    <a href="/quizzes/{{ question.id }}" class="btn btn-primary">Play</a>
+    <h5 class="card-title">{{ exam.exam_title }}</h5>
+    <a href="/quizzes/{{ exam.id }}" class="btn btn-primary">Play</a>
   </div>
 </div>
 {% endfor %}
