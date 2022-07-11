@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from quizzes.forms import EditProfileForm
 from quizzes.models import Question, Exam
 from django.http import Http404
+from django.core.paginator import Paginator
 
 def index(request):
 	exam_list = Exam.objects.all()
@@ -56,6 +57,12 @@ def change_password(request):
 		current_date = datetime.now()
 		args = {'form': form, 'date': current_date}
 		return render(request, 'quizzes/change_password.html', args) 
+
+def take_quiz(request, exam_id):
+	question_list = Question.objects.filter(exam__id=exam_id)
+	args = {'question_list': question_list}
+	paginator = Paginator(question_list, 1)
+	return render(request, 'quizzes/quiz.html', args[0])
 
 def quiz(request, question_id):
 	try:
